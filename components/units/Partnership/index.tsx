@@ -13,7 +13,7 @@ const Partnership: FC<TWithId> = ({ id }) => {
   const { theme } = useTheme();
 
   return (
-    <Tag tag='section' id={id} inMotion={false} className='py-24 sm:py-32'>
+    <Tag tag='section' id={id} inMotion={false} className='py-10 sm:py-20'>
       <div className='mx-auto max-w-7xl px-6 lg:px-8'>
         <div className='mx-auto max-w-2xl lg:max-w-none'>
           <Title level='3' variant='tertiary' className='text-center'>

@@ -16,7 +16,7 @@ const stats = [
 
 const Content: FC<TWithId> = ({ id }) => {
   return (
-    <Tag tag='section' inMotion={false} className='py-24 sm:py-32' id={id}>
+    <Tag tag='section' inMotion={false} className='py-10 sm:py-20' id={id}>
       <div className='mx-auto grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:max-w-none lg:grid-cols-2'>
         <div className='lg:pr-4'>
           <div
@@ -88,11 +88,11 @@ const Content: FC<TWithId> = ({ id }) => {
               </Text>
             </div>
           </div>
-          <dl className='mt-10 grid max-w-xl grid-cols-3 gap-10 border-t border-primary/10 pt-10 sm:grid-cols-4'>
+          <dl className='mt-10 grid max-w-full grid-cols-1 gap-10 border-t border-primary/10 sm:grid-cols-4 md:grid-cols-3'>
             {stats.map((stat) => (
               <div key={stat.label} className='col-span-1 flex flex-col gap-2'>
                 <dt className='text-base font-semibold text-secondary'>{stat.label}</dt>
-                <dd className='mt-2 text-lg font-bold tracking-tight text-info lg:text-xl xl:text-2xl'>{stat.value}</dd>
+                <dd className='mt-2 text-xl font-bold tracking-tight text-info xl:text-2xl'>{stat.value}</dd>
               </div>
             ))}
           </dl>

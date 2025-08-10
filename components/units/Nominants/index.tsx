@@ -74,7 +74,7 @@ const Nominants: FC<TWithId> = ({ id }) => {
   }, [buildLeaderboardPercents]);
 
   return (
-    <Tag tag='section' id={id} className='bg-background py-24 sm:py-32' inMotion={false}>
+    <Tag tag='section' id={id} className='bg-background py-10 sm:py-20' inMotion={false}>
       <div className='mx-auto max-w-2xl lg:mx-0'>
         <Title level='2' variant='secondary'>
           Наши номинанты
@@ -86,8 +86,8 @@ const Nominants: FC<TWithId> = ({ id }) => {
       <ul className='mx-auto mt-10 max-w-3xl space-y-6 lg:mx-0 lg:max-w-4xl'>
         {NOMINANTS.map((person, index) => (
           <li key={person.name}>
-            <div className='flex flex-col items-start justify-between rounded-2xl border border-secondary/10 p-3 md:flex-row md:items-center'>
-              <div className='relative flex flex-col items-start gap-4 md:flex-row md:items-center'>
+            <div className='flex flex-col items-center justify-between rounded-2xl border border-secondary/10 p-3 md:flex-row md:items-center'>
+              <div className='relative flex flex-col items-center gap-4 md:flex-row md:items-center'>
                 <div
                   className='absolute -top-1 -left-1 flex h-6 w-6 items-center justify-center rounded-md bg-secondary text-base font-bold
                     text-primary'
@@ -99,13 +99,13 @@ const Nominants: FC<TWithId> = ({ id }) => {
                   src={person.imageUrl}
                   width={160}
                   height={160}
-                  className='size-60 rounded-md object-cover'
+                  className='mx-auto h-60 w-full rounded-md object-cover md:w-60'
                 />
-                <div className='flex w-full flex-col'>
+                <div className='flex w-full flex-col justify-center text-center md:text-left'>
                   <Title level='4' variant='tertiary' className='text-lg'>
                     {person.name}
                   </Title>
-                  <Text variant='secondary' className='mt-1 text-sm text-info'>
+                  <Text variant='secondary' className='mt-1 text-center text-sm text-info md:text-left'>
                     {person.role}
                   </Text>
                 </div>
@@ -113,9 +113,7 @@ const Nominants: FC<TWithId> = ({ id }) => {
 
               <div className='pt-4 md:pl-4'>
                 {showResults ? (
-                  <span className='text-base font-extrabold text-secondary sm:text-lg md:text-xl'>
-                    {percentages[index]}%
-                  </span>
+                  <span className='text-lg font-extrabold text-secondary md:text-xl'>{percentages[index]}%</span>
                 ) : (
                   <Vote person={person} onSuccess={handleVoteSuccess} />
                 )}

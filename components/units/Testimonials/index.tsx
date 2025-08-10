@@ -8,7 +8,7 @@ import { TWithId } from '@/lib/interfaces/shared';
 const Testimonials: FC<TWithId> = ({ id }) => {
   return (
     <Tag tag='section' id={id} className='isolate overflow-hidden px-6 lg:px-8'>
-      <div className='relative mx-auto max-w-2xl py-24 sm:py-32 lg:max-w-4xl'>
+      <div className='relative mx-auto max-w-2xl py-10 sm:py-20 lg:max-w-4xl'>
         <div
           className='bg-[radial-gradient(50%_100%_at_top,var(--color-primary-foreground), var(--color-primary))] absolute top-0 left-1/2
             -z-10 h-200 w-360 -translate-x-1/2 opacity-20 lg:left-36'

@@ -7,7 +7,7 @@ import { TWithId } from '@/lib/interfaces/shared';
 
 const Timeline: FC<TWithId> = ({ id }) => {
   return (
-    <Tag tag='section' id={id} className='py-24 sm:py-32' inMotion={false}>
+    <Tag tag='section' id={id} className='py-10 sm:py-20' inMotion={false}>
       <div className='mx-auto px-6 lg:px-8'>
         <div className='mx-auto grid max-w-2xl grid-cols-1 gap-10 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-4'>
           {TIMELINE.map((item) => (

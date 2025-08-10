@@ -15,7 +15,7 @@ const Logo: FC<TLogo> = ({ className, siteName = SITE_NAME, reverse = false }) =
         alt={siteName}
         width={100}
         height={100}
-        className={cn(className, 'size-10 scale-300 dark:invert', reverse ? 'invert' : '')}
+        className={cn(className, 'size-10 scale-200', reverse ? 'invert' : 'dark:invert')}
       />
     </Link>
   );
