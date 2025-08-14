@@ -32,8 +32,6 @@ const googleSheetsVerificationService = async (data: TVerificationFormData): Pro
 
     const result: TGoogleSheetsResponse = await response.json();
 
-    console.log('result', result);
-
     return result;
   } catch (error) {
     console.error('Error submitting verificationCode to Google Sheets:', error);
