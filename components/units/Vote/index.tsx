@@ -6,6 +6,7 @@ import { CheckIcon } from 'lucide-react';
 
 import Button from '@/components/elements/Button';
 import Modal from '@/components/elements/Modal';
+import VerificationForm from '@/components/forms/VerificationForm';
 import VoteForm from '@/components/forms/VoteForm';
 import cn from '@/lib/packages/cn';
 
@@ -21,18 +22,28 @@ type TVote = {
 };
 
 const Vote: FC<TVote> = ({ person, className, onSuccess }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVoteModalOpen, setIsVoteModalOpen] = useState(false);
+  const [isVerificationModalOpen, setIsVerificationModalOpen] = useState(false);
 
   const handleVoteClick = () => {
-    setIsModalOpen(true);
+    setIsVoteModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleCloseVoteModal = () => {
+    setIsVoteModalOpen(false);
+  };
+
+  const handleCloseVerificationModal = () => {
+    setIsVerificationModalOpen(false);
   };
 
   const handleVoteSuccess = () => {
-    setIsModalOpen(false);
+    setIsVoteModalOpen(false);
+    setIsVerificationModalOpen(true);
+  };
+
+  const handleVerificationSuccess = () => {
+    setIsVerificationModalOpen(false);
     onSuccess?.();
   };
 
@@ -46,12 +57,21 @@ const Vote: FC<TVote> = ({ person, className, onSuccess }) => {
       </Button>
 
       <Modal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
+        isOpen={isVoteModalOpen}
+        onClose={handleCloseVoteModal}
         title={`Голосовать за ${person.formTitle}`}
         className='max-w-lg'
       >
         <VoteForm nominantName={person.name} onSuccess={handleVoteSuccess} />
+      </Modal>
+
+      <Modal
+        isOpen={isVerificationModalOpen}
+        onClose={handleCloseVerificationModal}
+        title='Подтверждение голоса'
+        className='max-w-lg'
+      >
+        <VerificationForm onSuccess={handleVerificationSuccess} />
       </Modal>
     </>
   );

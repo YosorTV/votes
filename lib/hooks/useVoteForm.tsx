@@ -22,12 +22,15 @@ const useVoteForm = (nominantName: string, onSuccess?: () => void) => {
   const onSubmit = useCallback(
     async (data: TVoteFormData) => {
       try {
-        const result = await googleSheetsService(data);
+        const result = await googleSheetsService<TVoteFormData>(data, 'append');
 
         if (result.result === 'success') {
+          localStorage.setItem('verificationPhone', data.phone);
+
           toaster({
             toastKey: 'success',
-            message: 'Голос принят!',
+            message: 'Голос принят в обработку',
+            description: 'Введите код верификации, отправленный на ваш номер',
           });
           onSuccess?.();
         } else {

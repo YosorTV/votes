@@ -1,47 +1,58 @@
 import type { Metadata } from 'next';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
 const metaDataAdapter = (): Metadata => ({
   title: {
-    default: 'Bunker Suite - Deploy to the Cloud with Confidence',
-    template: '%s | Bunker Suite',
+    default: 'Голос за добро — поддержи добрые инициативы',
+    template: '%s | Голос за добро',
   },
   description:
-    'Deploy your applications to the cloud with confidence. Bunker Suite provides secure, scalable cloud deployment with SSL certificates, simple queues, and push-to-deploy functionality.',
-  keywords: ['bunker suite'],
-  authors: [{ name: 'Bunker Suite Team' }],
-  creator: 'Bunker Suite',
-  publisher: 'Bunker Suite',
+    'Платформа «Голос за добро» помогает поддерживать социальные и благотворительные инициативы. Голосуйте, делитесь и делайте мир лучше.',
+  keywords: [
+    'голос за добро',
+    'добрые дела',
+    'благотворительность',
+    'социальные проекты',
+    'волонтёрство',
+    'голосование',
+    'поддержка инициатив',
+  ],
+  authors: [{ name: 'Команда «Голос за добро»' }],
+  creator: 'Голос за добро',
+  publisher: 'Голос за добро',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://bunkersuite.com'),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://bunkersuite.com',
-    title: 'Bunker Suite - Deploy to the Cloud with Confidence',
-    description: 'Deploy your applications to the cloud with confidence. Secure, scalable cloud deployment platform.',
-    siteName: 'Bunker Suite',
+    locale: 'ru_RU',
+    url: '/',
+    title: 'Голос за добро — поддержи добрые инициативы',
+    description:
+      'Поддерживайте социальные и благотворительные проекты. Голосуйте и делитесь добрыми делами вместе с «Голос за добро».',
+    siteName: 'Голос за добро',
     images: [
       {
-        url: '/og-image.png',
+        url: '/logo.svg',
         width: 1200,
         height: 630,
-        alt: 'Bunker Suite - Cloud Deployment Platform',
+        alt: 'Голос за добро — платформа добрых инициатив',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bunker Suite - Deploy to the Cloud with Confidence',
-    description: 'Deploy your applications to the cloud with confidence. Secure, scalable cloud deployment platform.',
-    images: ['/og-image.png'],
-    creator: '@bunkersuite',
+    title: 'Голос за добро — поддержи добрые инициативы',
+    description:
+      'Платформа для поддержки социальных и благотворительных проектов. Присоединяйтесь к движению добрых дел!',
+    images: ['/logo.svg'],
   },
   robots: {
     index: true,

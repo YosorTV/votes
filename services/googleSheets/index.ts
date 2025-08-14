@@ -1,11 +1,14 @@
-import { TVoteFormData } from '@/lib/interfaces/forms/voteForm.types';
-
 export interface TGoogleSheetsResponse {
   result: 'success' | 'error';
   msg: string;
 }
 
-const googleSheetsService = async (data: TVoteFormData): Promise<TGoogleSheetsResponse> => {
+type TGoogleSheetsAction = 'append' | 'updateVerificationCode';
+
+const googleSheetsService = async <T extends { phone: string }>(
+  data: T,
+  action: TGoogleSheetsAction
+): Promise<TGoogleSheetsResponse> => {
   const scriptUrl = process.env.NEXT_PUBLIC_API;
 
   if (!scriptUrl) {
@@ -19,6 +22,8 @@ const googleSheetsService = async (data: TVoteFormData): Promise<TGoogleSheetsRe
   try {
     const formData = {
       ...data,
+      action,
+      phone: data.phone.replace(/\s/g, ''),
       token: process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_TOKEN,
       timestamp: new Date().toISOString(),
     };
