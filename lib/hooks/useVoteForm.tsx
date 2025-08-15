@@ -29,8 +29,7 @@ const useVoteForm = (nominantName: string, onSuccess?: () => void) => {
 
           toaster({
             toastKey: 'success',
-            message: 'Голос принят в обработку',
-            description: 'Введите код верификации, отправленный на ваш номер',
+            message: 'Авторизационный код отправлен на ваш номер телефона',
           });
           onSuccess?.();
         } else {
