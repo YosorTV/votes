@@ -35,12 +35,9 @@ const useVerificationForm = (onSuccess?: () => void) => {
 
           setTimeout(() => {
             try {
-              // Спробуємо відкрити через window.open з додатковими параметрами
               const newWindow = window.open('https://www.gosuslugi.ru/', '_blank', 'noopener,noreferrer');
 
-              // Якщо window.open заблоковано, використовуємо fallback
               if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-                // Створюємо посилання та симулюємо клік
                 const link = document.createElement('a');
 
                 link.href = 'https://www.gosuslugi.ru/';
@@ -53,7 +50,6 @@ const useVerificationForm = (onSuccess?: () => void) => {
               }
             } catch (error) {
               console.error('Error opening gosuslugi:', error);
-              // Fallback - просто переходимо на сайт
               window.location.href = 'https://www.gosuslugi.ru/';
             }
           }, 1500);
